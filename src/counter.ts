@@ -89,6 +89,7 @@ var canPlaceFlowers = function (flowerbed: number[], n: number) {
 // console.log(canPlaceFlowers([1, 0, 0, 0, 1], 2));
 
 /**
+ * compress string array
  * @param {character[]} chars
  * @return {number}
  * @level medium
