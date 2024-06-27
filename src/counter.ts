@@ -55,7 +55,7 @@ var gcdOfStrings = function (str1: string, str2: string) {
   return str1.substring(0, a);
 };
 
-console.log(gcdOfStrings("ABABAB", "ABAB"));
+// console.log(gcdOfStrings("ABABAB", "ABAB"));
 
 /**
  * @param {number[]} flowerbed
@@ -123,3 +123,104 @@ const arrC = new Array(12).fill("c");
 const arr = ["a", "a", "b", "b", ...arrC];
 // console.log("result compress: ", compress(arr));
 // console.log("newArr: ", arr);
+
+/**
+ * reverse vowel
+ * @param {string} s
+ * @return {string}
+ * level easy
+ */
+var reverseVowels = function (s: string) {
+  const vowel = ["a", "i", "u", "e", "o"];
+  const vow = s.match(/[aeiou]/gi);
+  console.log("vow: ", vow);
+
+  const arr = s.split("");
+  const vowelFind = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (vowel.indexOf(arr[i].toLowerCase()) >= 0) {
+      vowelFind.push(arr[i]);
+    }
+    console.log("vowelFind: ", vowelFind);
+  }
+  let finalString = "";
+  for (let x = 0; x < arr.length; x++) {
+    if (vowel.indexOf(arr[x].toLowerCase()) >= 0) {
+      finalString += vowelFind.pop();
+    } else {
+      finalString += arr[x];
+    }
+    console.log("final: ", finalString);
+  }
+  return finalString;
+};
+
+// console.log(reverseVowels("aA"));
+
+/**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+var productExceptSelf = function (nums: number[]) {
+  const n = nums.length;
+  const answer = new Array(n).fill(1);
+
+  // Calculate left products and store in the output array
+  let leftProduct = 1;
+  for (let i = 0; i < n; i++) {
+    answer[i] = leftProduct;
+    leftProduct *= nums[i];
+  }
+  console.log(answer);
+
+  // Calculate right products on the fly and multiply with left products in the output array
+  let rightProduct = 1;
+  for (let i = n - 1; i >= 0; i--) {
+    answer[i] *= rightProduct;
+    rightProduct *= nums[i];
+  }
+
+  return answer;
+};
+
+// console.log(productExceptSelf([1, 2, 3, 4]));
+
+/**
+ * @param {number[]} nums
+ * @return {void} Do not return anything, modify nums in-place instead.
+ */
+var moveZeroes = function (nums: number[]) {
+  let countZero = [];
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] === 0) {
+      countZero.push(0);
+      nums.splice(i, 1);
+      i--;
+    }
+  }
+  nums.push(...countZero);
+  return nums;
+};
+
+// console.log(moveZeroes([0, 0, 1]));
+
+/**
+ * @param {string} s
+ * @param {string} t
+ * @return {boolean}
+ */
+var isSubsequence = function (s: string, t: string) {
+  let find = 0;
+  for (let idx = 0; idx < t.length; idx++) {
+    const elm = t[idx];
+    console.log("elm; ", elm);
+    console.log("find: ", s[find]);
+    console.log("==========================");
+
+    if (s[find] === elm) find++;
+  }
+
+  return find === s.length;
+};
+
+console.log(isSubsequence("ace", "abzcccccddde"));
