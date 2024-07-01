@@ -223,4 +223,78 @@ var isSubsequence = function (s: string, t: string) {
   return find === s.length;
 };
 
-console.log(isSubsequence("ace", "abzcccccddde"));
+// console.log(isSubsequence("ace", "abzcccccddde"));
+
+/**
+ * @param {number[]} arr
+ * @return {boolean}
+ */
+var uniqueOccurrences = function (arr: number[]) {
+  const mappingScore: number[] = [];
+  for (let idx = 0; idx < arr.length; idx++) {
+    const element = arr[idx];
+    if (!mappingScore[element]) {
+      mappingScore[element] = 1;
+    } else mappingScore[element] = mappingScore[element] + 1;
+  }
+  console.log(mappingScore);
+
+  const check = [...new Set(mappingScore)];
+  console.log(check);
+
+  return check.length === mappingScore.length;
+};
+// not solved
+// console.log(uniqueOccurrences([-3, 0, 1, -3, 1, 1, 1, -3, 10, 0]));
+
+/**
+ * @param {string} s
+ * @return {string}
+ */
+var removeStars = function (s: string) {
+  const newArr: string[] = [];
+  for (let i = 0; i < s.length; i++) {
+    if (s[i] === "*") newArr.pop();
+    else newArr.push(s[i]);
+  }
+
+  return newArr.join("");
+};
+
+// console.log(removeStars("leet*cod*"));
+
+/**
+ * @param {string} s
+ * @return {string}
+ */
+var decodeString = function (s: string) {
+  const stack: string[] = [];
+  for (const char of s) {
+    console.log("char: ", char);
+    if (char !== "]") {
+      stack.push(char);
+      continue;
+    }
+    let cur = stack.pop();
+    let str = "";
+    while (cur !== "[") {
+      str = cur + str;
+      cur = stack.pop();
+    }
+    console.log("str: ", str);
+    console.log("cur: ", cur);
+
+    let num = "";
+    cur = stack.pop();
+    while (!Number.isNaN(Number(cur))) {
+      num = cur + num;
+      cur = stack.pop();
+    }
+    stack.push(cur);
+    stack.push(str.repeat(Number(num)));
+    console.log("stack: ", stack);
+  }
+  return stack.join("");
+};
+
+// console.log(decodeString("3[a2[c]]"));

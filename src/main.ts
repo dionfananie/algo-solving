@@ -1,9 +1,10 @@
-import './style.css';
-import Logo from './assets/logo.png';
-import { setupCounter } from './counter.ts';
-import typescriptLogo from './typescript.svg';
+import "./style.css";
+import Logo from "./assets/logo.png";
+import { setupCounter } from "./counter.ts";
+import binaryTree from "./binarytree.ts";
+import typescriptLogo from "./typescript.svg";
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
+document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   <div>
     <a href="https://farmfe.org/" target="_blank">
       <img src="${Logo}" class="logo" alt="Vite logo" />
@@ -20,5 +21,5 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     </p>
   </div>
 `;
-
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!);
+binaryTree();
+setupCounter(document.querySelector<HTMLButtonElement>("#counter")!);
