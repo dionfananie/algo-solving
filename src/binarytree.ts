@@ -52,8 +52,8 @@ class BinaryTree<T> {
     if (node !== null) {
       edge = edge + 1;
       if (edge > this.edge) this.edge = edge;
-      console.log("node: ", node);
-      console.log("result: ", result);
+      // console.log("node: ", node);
+      // console.log("result: ", result);
       //   console.log("=============================================");
       this.inorder(node.left, edge, result);
       result.push(node.data);
@@ -71,20 +71,62 @@ class BinaryTree<T> {
   finMaxEdge() {
     return this.edge;
   }
+
+  private minValue(node: Node<T>): T {
+    console.log("min value: ", node);
+
+    let currentNode = node;
+    while (currentNode.left !== null) {
+      currentNode = currentNode.left;
+    }
+    return currentNode.data;
+  }
+  private deleteNode(node: Node<T> | null, value: T): Node<T> | null {
+    console.log("node: ", node);
+
+    if (!node) return null;
+
+    if (value < node.data) {
+      node.left = this.deleteNode(node.left, value);
+      return node;
+    } else if (value > node.data) {
+      node.right = this.deleteNode(node.right, value);
+      return node;
+    } else {
+      if (!node.left) return node.right;
+      else if (!node.right) return node.left;
+    }
+    node.data = this.minValue(node.right);
+    node.right = this.deleteNode(node.right, node.data);
+    return node;
+  }
+
+  delete(node: T): void {
+    this.root = this.deleteNode(this.root, node);
+  }
 }
 
 export default function binaryTree() {
   const bst = new BinaryTree();
-  bst.insert(15);
-  bst.insert(19);
+  bst.insert(50);
+  bst.insert(30);
+  bst.insert(70);
+  bst.insert(60);
+  bst.insert(80);
+  bst.insert(55);
+  bst.insert(65);
+  bst.insert(63);
+  bst.insert(67);
+  bst.insert(20);
+  bst.insert(40);
   bst.insert(10);
-  bst.insert(12);
-  bst.insert(9);
-  bst.insert(7);
+  bst.insert(25);
   bst.insert(5);
-  bst.insert(14);
+  bst.insert(15);
   console.log(bst);
-  console.log(bst.search(13));
-  console.log(bst.inorderTraversal());
-  console.log(bst.finMaxEdge());
+  // console.log(bst.search(13));
+  // console.log(bst.inorderTraversal());
+  // console.log(bst.finMaxEdge());
+  bst.delete(50);
+  // console.log(bst);
 }
