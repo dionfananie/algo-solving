@@ -54,6 +54,23 @@ class LinkedList<T> {
       prev.next = current.next;
     }
   }
+
+  reverse(): void {
+    if (!this.head || this.head.next || this.head.next === this.head) return;
+    let prev: List<T> | null = null;
+    let current: List<T> | null = this.head;
+    let next: List<T> | null = null;
+    let tail = this.head;
+
+    do {
+      next = current.next;
+      current.next = prev;
+      prev = current;
+      current = next;
+    } while (current !== this.head && current?.next);
+    tail.next = prev;
+    this.head = prev;
+  }
   getList() {
     return this.head;
   }
@@ -74,16 +91,13 @@ class LinkedList<T> {
 export default function linkedList() {
   console.log("linkedlist");
   const linked = new LinkedList();
-  linked.prepend(2);
-  linked.prepend(5);
-  linked.append(3);
+  // linked.prepend(2);
+  // linked.prepend(5);
+  // linked.append(3);
   linked.append(4);
-  linked.append(14);
+  linked.append(6);
+  linked.append(8);
   //   linked.prepend(7);
   //   linked.append(9);
-  console.log(linked.getList());
-  console.log(linked.getLength());
-  //   linked.remove(411);
-  linked.remove(2);
-  console.log(linked.getList());
+  console.log(linked.reverse());
 }
