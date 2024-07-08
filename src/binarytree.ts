@@ -95,6 +95,28 @@ class BinaryTree<T> {
     return result;
   }
 
+  bfs() {
+    const queue: Node<T>[] = [];
+    const result: T[] = [];
+    if (this.root !== null) {
+      queue.push(this.root);
+
+      while (queue.length > 0) {
+        let node = queue.shift() as Node<T>;
+        if (node) result.push(node.data);
+
+        if (node.left !== null) {
+          queue.push(node.left);
+        }
+
+        if (node.right !== null) {
+          queue.push(node.right);
+        }
+      }
+    }
+    return result;
+  }
+
   finMaxEdge() {
     return this.edge;
   }
@@ -146,7 +168,8 @@ export default function binaryTree() {
   // console.log(bst.search(13));
   // console.log(bst.inorderTraversal());
   // console.log(bst.finMaxEdge());
-  console.log(bst.postorderTraversal());
+  // console.log(bst.postorderTraversal());
+  console.log(bst.bfs());
 
   // console.log(bst);
 }
