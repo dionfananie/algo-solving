@@ -2,6 +2,7 @@ import "./style.css";
 import Logo from "./assets/logo.png";
 import { setupCounter } from "./counter.ts";
 import typescriptLogo from "./typescript.svg";
+import binaryTree from "./binarytree.ts";
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   <div>
@@ -21,9 +22,6 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   </div>
 `;
 
-setupCounter(document.querySelector<HTMLButtonElement>("#counter")!);
+binaryTree();
 
-const dom = document.createElement("div");
-dom.innerHTML = "<div><p><span>hello\n</span></p></div>";
-console.log(dom.innerHTML);
-console.log(dom.innerText);
+setupCounter(document.querySelector<HTMLButtonElement>("#counter")!);
