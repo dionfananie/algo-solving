@@ -68,8 +68,6 @@ class BinaryTree<T> {
     return result;
   }
 
-  preorderTraversal() {}
-
   finMaxEdge() {
     return this.edge;
   }
@@ -121,8 +119,6 @@ export default function binaryTree() {
   // console.log(bst.search(13));
   // console.log(bst.inorderTraversal());
   // console.log(bst.finMaxEdge());
-  // bst.delete(50);
+  bst.delete(50);
   // console.log(bst);
 }
-
-binaryTree();
