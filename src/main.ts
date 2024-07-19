@@ -1,4 +1,5 @@
 import "./style.css";
+import "./scroll.css";
 import Logo from "./assets/logo.png";
 import { setupCounter } from "./counter.ts";
 import typescriptLogo from "./typescript.svg";
