@@ -25,9 +25,17 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  place-items: center;
+  align-items: center;
+  justify-content: center;
   min-width: 320px;
   min-height: 100vh;
+}
+
+.box {
+  background-color: rgb(46 85 108);
+  width: 120px;
+  height: 120px;
+  border-radius: 15px;
 }
 
 h1 {
@@ -49,7 +57,7 @@ h1 {
   transition: filter 300ms;
 }
 .logo:hover {
-  filter: drop-shadow(0 0 2em #9F1A8Faa);
+  filter: drop-shadow(0 0 2em #9f1a8faa);
 }
 .logo.vanilla:hover {
   filter: drop-shadow(0 0 2em #3178c6aa);
