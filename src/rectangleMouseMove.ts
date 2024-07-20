@@ -1,6 +1,6 @@
 import "./style.css";
 
-const box = document.querySelector(".box");
+const box: HTMLDivElement | null = document.querySelector(".box");
 console.log(box);
 
 function clamp(v: number, min: number, max: number) {
@@ -17,6 +17,8 @@ window.addEventListener("mousemove", (e) => {
   const boxRight = rect?.right || 0;
   const boxTop = (rect?.top || 0) + (rect?.height || 0) / 2;
   const boxBottom = rect?.bottom || 0;
+  console.log(e);
+
   // console.log(`mouse: ${mouseX} - ${mouseY}`);
   // console.log(
   //   `box: box left: ${boxLeft} box right: ${boxRight} - boxTop:${boxTop} boxBottom: ${boxBottom}`
