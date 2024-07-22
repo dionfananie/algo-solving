@@ -17,7 +17,6 @@ window.addEventListener("mousemove", (e) => {
   const boxRight = rect?.right || 0;
   const boxTop = (rect?.top || 0) + (rect?.height || 0) / 2;
   const boxBottom = rect?.bottom || 0;
-  console.log(e);
 
   // console.log(`mouse: ${mouseX} - ${mouseY}`);
   // console.log(
